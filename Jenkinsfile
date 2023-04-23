@@ -13,7 +13,7 @@ pipeline {
                     def imageTag = "pgrs/app:${env.BUILD_NUMBER}"
                     def latestTag = "pgrs/app:latest"
                     sh "docker build -t $imageTag -t $latestTag ."
-                    withCredentials([usernamePassword(credentialsId: 'docker_creds', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+                    withCredentials([usernamePassword(credentialsId: 'dockercreds', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
                         sh 'docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD'
                         sh "docker stop my-app || true" // Stop and remove any existing container with the same name
                         sh "docker rm my-app || true"
