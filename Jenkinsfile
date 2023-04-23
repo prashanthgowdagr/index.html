@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('git pull') {
             steps {
-                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/prashanthgowdagr/index.html.git']])
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/prashanthgowdagr/simple-index.html-app.git']])
             }
         }
         stage('Build and Publish Docker Image') {
